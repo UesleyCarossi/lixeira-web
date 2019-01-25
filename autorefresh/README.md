@@ -1,4 +1,4 @@
 # autorefresh
-O autorefresh é possível a tag <meta/> com as se propriedades:
+O autorefresh é possível a tag <meta/> com as propriedades:
 
-"<meta http-equiv="refresh" content="1"/>"
+<*meta http-equiv="refresh" content="1"/>
