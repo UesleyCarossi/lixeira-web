@@ -1,0 +1,25 @@
+#banner {
+    background-color: #bfbfbf;
+    height: 76px;
+}
+
+#banner h1 {
+    float: left;
+}
+
+#banner nav {
+    float: right;
+}
+
+#banner nav ul li {
+    /*inline: desconsidera width e heigth
+    * inline-block: considera width e heigth*/
+    display: inline-block;
+    width: 100px;
+}
+
+#banner nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
