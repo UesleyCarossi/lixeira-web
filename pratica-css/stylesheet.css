@@ -1,14 +1,25 @@
 #banner {
     background-color: #bfbfbf;
-    height: 76px;
+    height: 67px;
+    padding: 30px 70px 30px 70px;
 }
 
 #banner h1 {
     float: left;
+    margin: 0;
 }
 
 #banner nav {
     float: right;
+    /*O css só aplica propridades como top, left... quando o elemento está posicionado.
+    * A propriedade position defide a posição do elemento para o css.*/
+    position: relative;
+    top: 50%;/*Posiciona elemento no centro apartir da metade do conteúdo.*/
+    transform: translate(0%, -50%);/*Desconta metade do tamanho do elemento da posição no conteúdo.*/
+}
+
+#banner ul {
+    margin: 0;
 }
 
 #banner nav ul li {
