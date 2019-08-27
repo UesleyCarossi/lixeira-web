@@ -1,0 +1,40 @@
+﻿body {
+	margin: 0;
+	padding: 0;
+	background: #19a9d6;
+}
+
+.loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+	background: #fff0;
+	border-radius: 10px;
+	transform: translate(-50%, -50%);
+	animation: init .5s linear 1, flip 5s linear infinite;
+}
+
+@keyframes init {
+	0% {
+		width: 0px;
+		height: 0px;
+	}
+	100% {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+@keyframes flip {
+	0% {
+		transform: translate(-50%, -50%) perspective(200px) rotateX(0deg) rotateY(0deg);
+	}
+	90% {
+		transform: translate(-50%, -50%) perspective(200px) rotateX(0deg) rotateY(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) perspective(200px) rotateX(0deg) rotateY(360deg);
+	}
+}
