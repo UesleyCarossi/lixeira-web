@@ -1,0 +1,46 @@
+﻿body {
+	margin: 0;
+	padding: 0;
+	background: #19a9d6;
+}
+
+#logo {
+	max-width: 12%;
+	max-height: 12%;
+	animation: logo 5s linear infinite;
+}
+
+#main {
+	max-width: 25%;
+	max-height: 25%;
+	animation: main 5s linear infinite;
+}
+
+#minor {
+	max-width: 8%;
+	max-height: 8%;
+	animation: minor 5s linear infinite;
+}
+
+#logomarca {
+	background: #ffffff;
+	animation: logomarca 5s linear infinite;
+}
+
+.logomarca-item {
+	width: auto;
+	height: auto;
+	/*visibility: hidden;*/
+}
+
+@keyframes logo {
+}
+
+@keyframes main {
+}
+
+@keyframes minor {
+}
+
+@keyframes logomarca {
+}
