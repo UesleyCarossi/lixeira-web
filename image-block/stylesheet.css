@@ -1,0 +1,35 @@
+﻿/*desabilita a seleção no body*/
+body {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Chrome/Safari/Opera */
+       -khtml-user-select: none; /* Konqueror */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none;
+}
+
+/*habilita a seleção nos campos editaveis*/
+input, textarea {
+    -webkit-touch-callout: initial; /* iOS Safari */
+      -webkit-user-select: text; /* Chrome/Safari/Opera */
+       -khtml-user-select: text; /* Konqueror */
+         -moz-user-select: text; /* Firefox */
+          -ms-user-select: text; /* Internet Explorer/Edge */
+              user-select: text;
+}
+
+/*habilita a seleção nos campos com o atributo contenteditable*/
+[contenteditable=true] {
+    -webkit-touch-callout: initial; /* iOS Safari */
+      -webkit-user-select: all; /* Chrome/Safari/Opera */
+       -khtml-user-select: all; /* Konqueror */
+         -moz-user-select: all; /* Firefox */
+          -ms-user-select: all; /* Internet Explorer/Edge */
+              user-select: all;
+}
+
+
+/*Desabilitar download e arrastar imagem*/
+img {
+    pointer-events: none;
+}
