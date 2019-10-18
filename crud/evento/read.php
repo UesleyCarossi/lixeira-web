@@ -36,15 +36,15 @@
        $q->execute(array($id));
        $data = $q->fetchAll(PDO::FETCH_ASSOC);
 		
-	   if (count($data) > 0) {
-		   echo '<select class="image-picker show-html" data-limit="2" multiple="multiple">';	   
+	   if (count($data) > 0) { 
 		   
 			foreach ($data as $row) {
-				echo '<option data-img-src="data:image/jpg;base64,' . $row['data'] . '" value="' . $row['id'] . '"></option>';
+				echo '<div>';
+				echo '	<img src="data:image/jpg;base64,' . $row['data'] . '" value="' . $row['id'] . '" />';
+				echo '</div>';
 				
 			}
-
-		   echo '</select>';
+			
 	   }
 	   
 	   
@@ -110,65 +110,10 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="../assets/js/bootstrap.min.js"></script>
 		<style>
-
-#rig {
-    max-width:900px;
-    margin:0 auto; /*center aligned*/
-    padding:0;
-    font-size:0; /* Remember to change it back to normal font size if have captions */
-    list-style:none;
-    background-color:#000;
-}
-#rig li {
-    display: inline-block;
-    *display:inline;/*for IE6 - IE7*/
-    width:25%;
-    vertical-align:middle;
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-        
-/* The wrapper for each item */
-.rig-cell {
-    margin:5px;
-    box-shadow:0 0 6px rgba(0,0,0,0.3);
-    display:block;
-    position: relative;
-    overflow:hidden;
-}
-        
-/* If have the image layer */
-.rig-img {
-    display:block;
-    width: 100%;
-    height: auto;
-    border:none;
-    transform:scale(1);
-    transition:all 1s;
-}
-
-#rig li:hover .rig-img {
-    transform:scale(1.05);
-}
-
-@media (max-width: 9000px) {
-    #rig li {
-        width:25%;
-    }
-}
-
-@media (max-width: 700px) {
-    #rig li {
-        width:33.33%;
-    }
-}
-
-@media (max-width: 550px) {
-    #rig li {
-        width:50%;
-    }
-}
+		img {
+			width: 100%;
+			margin: 5px;
+		}
 		</style>
     </body>
 

@@ -105,7 +105,7 @@
 		
 		if(empty($imagem))
         {
-            $dataErro = 'Por favor selecione pelo menos uma imagem!';
+            $imagemErro = 'Por favor selecione pelo menos uma imagem!';
             $validacao = false;
         }
 		

@@ -3,24 +3,23 @@
 	require '../banco.php';
 
 	$id = null;
-	if ( !empty($_GET['id']))
-            {
+	if ( !empty($_GET['id'])) {
 		$id = $_REQUEST['id'];
-            }
+    }
 
-	if ( null==$id )
-            {
+	if ( null==$id ) {
 		header("Location: index.php");
-            }
+    }
 
-	if ( !empty($_POST))
-            {
+	if ( !empty($_POST)) {
 
 		$nomeErro = null;
 		$data = null;
+		$img = null;
 
 		$nome = $_POST['nome'];
 		$data = $_POST['data'];
+		$imagem = $_FILES['imagem']['name'];
 
 		//Validação
 		$validacao = true;
@@ -35,6 +34,12 @@
                     $dataErro = 'Por favor digite a data!';
                     $validacao = false;
 		}
+		
+		if(empty($imagem))
+        {
+            $dataErro = 'Por favor selecione pelo menos uma imagem!';
+            $validacao = false;
+        }
 
 		// update data
 		if ($validacao)
@@ -47,10 +52,10 @@
                     Banco::desconectar();
                     header("Location: index.php");
 		}
-	}
-        else
-            {
-                $pdo = Banco::conectar();
+	} else {
+        $pdo = Banco::conectar();
+		
+		//evento
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "SELECT * FROM evento where id = ?";
 		$q = $pdo->prepare($sql);
@@ -58,6 +63,17 @@
 		$data = $q->fetch(PDO::FETCH_ASSOC);
 		$nome = $data['nome'];
         $data = $data['data'];
+		
+		//imagem
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "SELECT ei.* FROM evento_imagem ei INNER JOIN evento e ON e.id = ei.evento where e.id = ?";
+		$q = $pdo->prepare($sql);
+		$q->execute(array($id));
+		$data = $q->fetch(PDO::FETCH_ASSOC);
+		$id = $data['id'];
+		$nome = $data['nome'];
+        $imagem = $data['data'];
+		
 		Banco::desconectar();
 	}
 ?>
@@ -81,7 +97,7 @@
                     <h3 class="well"> Atualizar Evento </h3>
                 </div>
 								<div class="card-body">
-                <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
+                <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post" multipart enctype="multipart/form-data">
 
                     <div class="control-group <?php echo !empty($nomeErro)?'error':'';?>">
                         <label class="control-label">Nome</label>
@@ -94,7 +110,7 @@
                     </div>
 
                     <div class="control-group <?php echo !empty($dataErro)?'error':'';?>">
-                        <label class="control-label">Endereço</label>
+                        <label class="control-label">Data</label>
                         <div class="controls">
 							<input class="form-control" name="data" type="date" required="" value="<?php echo !empty($data)?$data: '';?>">
                             <?php if (!empty($dataErro)): ?>
@@ -102,6 +118,16 @@
                                 <?php endif; ?>
                         </div>
                     </div>
+					
+					<div class="control-group <?php echo !empty($imagemErro)?'error ': '';?>">
+						<label class="control-label">Imagem</label>
+						<div class="controls">
+							<input class="form-control" name="imagem[]" type="file" required="" value="<?php echo !empty($imagem)?$imagem: '';?>" multiple >
+							<?php if(!empty($imagemErro)): ?>
+								<span class="help-inline"><?php echo $imagemErro;?></span>
+								<?php endif;?>
+						</div>
+					</div>
 
                     <br/>
                     <div class="form-actions">
