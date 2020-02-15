@@ -1,0 +1,18 @@
+﻿html, body {
+	height: 100%;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.item {
+	width: 100%;
+	height: 200px;
+}
+
+.container :nth-child(1) { order: 3; background-color: blue; }
+.container :nth-child(2) { order: 2; background-color: red; }
+.container :nth-child(3) { order: 1; background-color: tomato; }
